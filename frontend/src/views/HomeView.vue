@@ -5,6 +5,10 @@
     import photobox from '../assets/images/photobox.png'
     import logo from '../assets/images/logo.png'
     import enter from '../assets/images/enter.png'
+    import { RouterLink } from 'vue-router'
+
+
+
 </script>
 
 <template>
@@ -15,7 +19,7 @@
             <img :src="photostrip1" class="w-60 absolute right-10 top-10 wiggle" alt="">
             <img :src="photostrip2" class="w-50 absolute left-10 bottom-30 wiggle2" alt="">
             <img :src="watermark" class="absolute inset-0 m-auto " alt="">
-            <img :src="photobox" class="absolute w-50 bottom-10 right-10 " alt="">
+            <img :src="photobox" class="absolute w-65 bottom-10 right-10 " alt="">
         </div>
 
         <!-- 2nd grid -->
@@ -29,9 +33,10 @@
                 <div v-for="(c, index) in [1,2,3,4,5,6,7,8,9,10,11,12,13]" :key="index" class="h-full w-15 border-r bg-[#FEC5BB]"></div>
             </div>
             <!-- enter button -->
-            <button class="absolute bottom-10 right-10 bg-white py-5 px-10 border rounded cursor-pointer hover:py-6 hover:px-11 transition-transform duration-300">
+            <RouterLink to="/layout" class="absolute bottom-10 right-10 bg-white py-5 px-10 border rounded cursor-pointer hover:py-6 hover:px-11 transition-transform duration-300">
                 <img :src="enter" alt="">
-            </button>
+            </RouterLink>
+            
         </div>
     </main>
 </template>
