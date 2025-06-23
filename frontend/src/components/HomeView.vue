@@ -1,0 +1,57 @@
+<script setup>
+    import photostrip1 from '../assets/images/photostrip1.png'
+    import photostrip2 from '../assets/images/photostrip2.png'
+    import watermark from '../assets/images/watermark.png'
+    import photobox from '../assets/images/photobox.png'
+    import logo from '../assets/images/logo.png'
+    import enter from '../assets/images/enter.png'
+</script>
+
+<template>
+    <main class="w-screen h-screen grid grid-cols-[55%_1fr] overflow-hidden">
+        <!-- 1st grid -->
+        <div class="h-full w-full relative border-r bg-[#fefae0]">
+            <!-- photo/designs -->
+            <img :src="photostrip1" class="w-60 absolute right-10 top-10 wiggle" alt="">
+            <img :src="photostrip2" class="w-50 absolute left-10 bottom-30 wiggle2" alt="">
+            <img :src="watermark" class="absolute inset-0 m-auto " alt="">
+            <img :src="photobox" class="absolute w-50 bottom-10 right-10 " alt="">
+        </div>
+
+        <!-- 2nd grid -->
+        <div class="overflow-hidden bg-[#edede9] relative group">
+            <!-- logo -->
+            <div class="bg-[#F8EDEB] h-25 w-full border-b flex justify-center items-center">
+                <img :src="logo" class="w-100" alt="">
+            </div>
+            <!-- curtain -->
+            <div class="w-full h-full flex transition-transform duration-300 group-hover:-translate-x-30">
+                <div v-for="(c, index) in [1,2,3,4,5,6,7,8,9,10,11,12,13]" :key="index" class="h-full w-15 border-r bg-[#FEC5BB]"></div>
+            </div>
+            <!-- enter button -->
+            <button class="absolute bottom-10 right-10 bg-white py-5 px-10 border rounded cursor-pointer hover:py-6 hover:px-11 transition-transform duration-300">
+                <img :src="enter" alt="">
+            </button>
+        </div>
+    </main>
+</template>
+
+<style scoped>
+    @keyframes wiggle {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+    }
+
+    .wiggle {
+    animation: wiggle 3s ease-in-out infinite;
+    }
+
+    @keyframes wiggle2 {
+    0%, 100% { transform: rotate(3deg); }
+    50% { transform: rotate(-3deg); }
+    }
+
+    .wiggle2 {
+    animation: wiggle2 3s ease-in-out infinite;
+    }
+</style>
