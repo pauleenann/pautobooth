@@ -8,13 +8,14 @@
     import done from '../assets/images/done.png'
     import proceed from '../assets/images/proceed.png'
     import { RouterLink } from "vue-router";
+    import { usePhotoStore } from "@/stores/photos";
 
     const camera = ref(null)
     const shots = ref(8)
     const timerImg = ref(['',one,two,three])
     const timer = ref(3)
     const isStart = ref(false)
-    const photos = reactive([])
+    const photosStore = usePhotoStore()
     
 
     // Use camera reference to call functions
@@ -22,7 +23,7 @@
         const blob = await camera.value?.snapshot();
 
         // To show the screenshot with an image tag, create a url
-        photos.push(URL.createObjectURL(blob));
+        photosStore.photos.push(URL.createObjectURL(blob));
     }
 
     const handleStart = ()=>{
@@ -54,7 +55,7 @@
         <div v-if="shots!=0" class="w-[60%] h-[70%] bg-white border flex flex-col items-center justify-center gap-7 overflow-hidden">
             <Camera :resolution="{ width: 600, height: 300 }" ref="camera" autoplay>
                 <div class="absolute inset-0 m-auto flex items-center justify-center">
-                    <button v-if="!isStart" class=" bg-[#FEC5BB] p-5 rounded border rounded" @click="handleStart" >
+                    <button v-if="!isStart" class=" bg-[#FEC5BB] p-5 rounded border rounded hover:translate-y-1 cursor-pointer" @click="handleStart" >
                             <img :src="start" alt="">
                     </button>  
                     <div v-else-if="isStart&&timer>0" class=" bg-[#FEC5BB]/30 w-50 h-50 p-5 rounded-circle text-white rounded-full flex items-center justify-center">
@@ -66,8 +67,8 @@
         </div>
         <div v-else class="w-[60%] h-[70%] bg-white border flex flex-col items-center justify-center gap-7 overflow-hidden">
             <img :src="done" alt="">
-            <RouterLink class="bg-[#FEC5BB] p-5 rounded border rounded cursor-pointer hover:translate-y-1">
-                <img :src="proceed" alt="">
+            <RouterLink to="/selection" class="bg-[#FEC5BB] p-5 rounded border rounded cursor-pointer hover:translate-y-1">
+                <img :src="proceed" alt="" class="w-100">
             </RouterLink>
         </div>
         <p v-if="shots!=0" class="text-black text-stroke absolute bottom-20">You have {{shots}}/8 shots left</p>

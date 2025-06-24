@@ -33,7 +33,7 @@
                 <div v-for="(c, index) in [1,2,3,4,5,6,7,8,9,10,11,12,13]" :key="index" class="h-full w-15 border-r bg-[#FEC5BB]"></div>
             </div>
             <!-- enter button -->
-            <RouterLink to="/layout" class="absolute bottom-10 right-10 bg-white py-5 px-10 border rounded cursor-pointer hover:py-6 hover:px-11 transition-transform duration-300">
+            <RouterLink to="/layout" class="absolute bottom-10 right-10 bg-white py-5 px-10 border rounded cursor-pointer hover:translate-y-1">
                 <img :src="enter" alt="">
             </RouterLink>
             

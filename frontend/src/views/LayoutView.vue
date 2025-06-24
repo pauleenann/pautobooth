@@ -8,14 +8,27 @@
     import next from '../assets/images/next.png'
     import back from '../assets/images/back.png'
     import { RouterLink } from 'vue-router'
+    import { usePhotoStore } from '@/stores/photos'
+    import { ref } from 'vue'
+    import { useRouter } from 'vue-router'
+
+    const selectedLayout = ref({})
+    const photosStore = usePhotoStore()
+    const router = useRouter()
 
     const layouts = [
-        { img: layoutA, name:'Layout A'},
-        { img: layoutB, name:'Layout B'},
-        { img: layoutC, name:'Layout C'},
-        { img: layoutD, name:'Layout D'}
+        { img: layoutA, name:'Layout A', no: 3},
+        { img: layoutB, name:'Layout B', no: 3},
+        { img: layoutC, name:'Layout C', no: 2},
+        { img: layoutD, name:'Layout D', no: 4}
     ]
 
+    const proceed = ()=>{
+        photosStore.layout = selectedLayout.value
+        router.push('/photobooth')
+    }
+
+    console.log(selectedLayout.value)
 </script>
 
 <template>
@@ -32,15 +45,22 @@
             <!-- layouts -->
             <div class="w-full flex justify-evenly">
                 <div v-for="(layout, index) in layouts" :key="index" >
-                    <Layout :layout="layout"/>
+                    <Layout 
+                        :layout="layout" 
+                        :selectLayout="()=>{
+                            selectedLayout=layout;
+                            console.log(selectedLayout)
+                        }"
+                        :selectedLayout="selectedLayout"
+                    />
                 </div>
             </div>
 
             <!-- next -->
             <div class="flex justify-end w-full">
-                <RouterLink to="/photobooth">
+                <button @click="proceed" class="hover:translate-y-1" :disabled="!selectedLayout">
                     <img :src="next" alt="">
-                </RouterLink>
+                </button>
             </div>
             
         </div>
