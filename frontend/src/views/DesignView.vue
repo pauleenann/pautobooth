@@ -61,7 +61,18 @@
             </div>
             <!-- styles -->
             <div class="p-5 flex flex-col gap-2 relative">
-                <p class="text-2xl mt-3 mb-3">Customize your strip</p>
+                <div class="flex justify-between items-center">
+                   <p class="text-2xl mt-3 mb-3">Customize your strip</p> 
+                   <button 
+                    @click="()=>{
+                        selectedColor=''
+                        selectedBg=''
+                    }"
+                     class="bg-red-100 py-2 px-3 rounded border"
+                    >
+                        Reset
+                    </button>
+                </div>
                 <!-- colors -->
                 <div class="flex flex-col gap-2">
                     <p>Colors</p>
