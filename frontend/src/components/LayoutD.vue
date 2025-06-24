@@ -1,20 +1,25 @@
 <script setup>
-import { usePhotoStore } from '@/stores/photos'
-import heart from '../assets/images/heart.png'
-import logo from '../assets/images/logo.png'
+  import { usePhotoStore } from '@/stores/photos'
+  import heart from '../assets/images/heart.png'
+  import logo from '../assets/images/logo.png'
 
-const props = defineProps({
-  selected: Array
-})
+  const props = defineProps({
+    selected: Array,
+    color: String,
+    bg: String
+  })
 </script>
 
 <template>
-  <div class="w-80 h-125 bg-[#F5F8FF] border px-3 pt-5 flex flex-col gap-2 shadow">
+  <div 
+    :style="{ backgroundImage: props.bg ? `url(${props.bg})` : '', backgroundSize: 'cover' }"
+    :class="[props.color||'bg-[#F8EDEB]', 'border border-transparent', 'w-80', 'h-125', 'px-3', 'pt-5', 'flex', 'flex-col', 'gap-2', 'shadow-xl']"
+  >
     <div class="grid grid-cols-2 gap-x-1">
       <div
         v-for="index in 2"
         :key="'row1-' + index"
-        class="w-full h-50 bg-[#FEC5BB] border"
+        :class="['border border-transparent', 'w-full', ' h-55']"
       >
         <img
           v-if="selected[index - 1]"
@@ -24,17 +29,17 @@ const props = defineProps({
         />
         <div
           v-else
-          class="w-full h-full bg-[#DFE7FD]"
+          class="w-full h-full bg-gray-200 text-gray-600 flex items-center justify-center"
         >
-          
-        </div>
+        No image selected
+      </div>
       </div>
     </div>
     <div class="grid grid-cols-2 gap-x-1">
       <div
         v-for="index in 2"
         :key="'row2-' + index"
-        class="w-full h-50 bg-[#FEC5BB] border"
+        :class="['border border-transparent', 'w-full', ' h-55']"
       >
         <img
           v-if="selected[index + 1]"
@@ -44,8 +49,9 @@ const props = defineProps({
         />
         <div
           v-else
-          class="w-full h-full bg-[#DFE7FD]"
+          class="w-full h-full bg-gray-200 text-gray-600 flex items-center justify-center"
         >
+          No image selected
         </div>
       </div>
     </div>

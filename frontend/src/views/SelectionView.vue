@@ -48,7 +48,7 @@
     }
 
     const proceed = ()=>{
-        photosStore.layout = selectedLayout.value
+        photoStore.selectedPhotos = selected.value
         router.push('/design')
     }
 </script>
@@ -79,7 +79,7 @@
                 </div>
 
                 <!-- next -->
-                <button @click="proceed" class="hover:translate-y-1 absolute right-10 bottom-10" :disabled="!selectedLayout">
+                <button @click="proceed" class="hover:translate-y-1 absolute right-10 bottom-10" :disabled="totalPhotos>0">
                     <img :src="next" alt="">
                 </button>
                
