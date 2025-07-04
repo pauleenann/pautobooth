@@ -81,7 +81,11 @@
                             v-for="(color,index) in colors" 
                             :key="index" 
                             :class="[selectedColor==color&&'border-[#fe5d9f]', color, 'w-20', 'h-20', 'rounded', 'border', 'cursor-pointer']"
-                            @click="selectedColor=color"
+                            @click="()=>{
+                                selectedColor=color;
+                                selectedBg=''
+
+                            }"
                         >
                         </button>
                     </div>
@@ -94,7 +98,10 @@
                             v-for="(bg,index) in backgrounds" 
                             :key="index" 
                             :class="[selectedBg==bg&&'border-[#fe5d9f]', color, 'w-20', 'h-20', 'rounded', 'border', 'cursor-pointer']"
-                            @click="selectedBg=bg"
+                            @click="()=>{
+                                selectedBg=bg;
+                                selectedColor=''
+                            }"
                         >
                             <img :src="bg" alt="" class="object-cover w-full h-full">
                         </button>

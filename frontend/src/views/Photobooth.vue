@@ -19,7 +19,8 @@
     
 
     // Use camera reference to call functions
-    const snapshot = async () => {
+    const snap = async () => {
+        // snap shot came from the Camera component
         const blob = await camera.value?.snapshot();
 
         // To show the screenshot with an image tag, create a url
@@ -34,12 +35,14 @@
         timer.value = 3
         isStart.value = true
 
+        // timerId is used to stope the interval
+        //without this, the loop will run forever
         const timerId = setInterval(()=>{
             timer.value--
 
             if(timer.value<0){
                 clearInterval(timerId)
-                snapshot()
+                snap()
                 shots.value--
                 // recursion 
                 handleStart()

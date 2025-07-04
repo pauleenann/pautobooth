@@ -15,6 +15,8 @@
     :style="{ backgroundImage: props.bg ? `url(${props.bg})` : '', backgroundSize: 'cover' }"
     :class="[props.color||'bg-[#F8EDEB]','border border-transparent', 'w-50', 'h-125', 'px-3', 'pt-5', 'flex', 'flex-col', 'gap-2', 'shadow-xl']"
   >
+    <!--  v-for="index in 3"
+    This loops 3 times, with index being 1, 2, and 3. -->
     <div
       v-for="index in 3"
       :key="index"
