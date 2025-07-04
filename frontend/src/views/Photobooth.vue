@@ -50,13 +50,25 @@
         },1000)
        
     }
+
+    // Set front camera
+    const cameraConstraints = {
+        video: {
+            facingMode: "user" //front camera (use "environment" for rear)
+        }
+    };
     console.log(shots.value)
 </script>
 
 <template>
     <main class="w-screen h-screen overflow-hidden bg-[#FFF2EB] flex items-center justify-center relative flex flex-col gap-3">
         <div v-if="shots!=0" class="w-[60%] h-[70%] bg-white border flex flex-col items-center justify-center gap-7 overflow-hidden">
-            <Camera :resolution="{ width: 600, height: 300 }" ref="camera" autoplay>
+            <Camera 
+                :constraints="cameraConstraints"
+                :resolution="{ width: 600, height: 300 }" 
+                ref="camera" 
+                autoplay
+            >
                 <div class="absolute inset-0 m-auto flex items-center justify-center">
                     <button v-if="!isStart" class=" bg-[#FEC5BB] p-5 rounded border rounded hover:translate-y-1 cursor-pointer" @click="handleStart" >
                             <img :src="start" alt="">
