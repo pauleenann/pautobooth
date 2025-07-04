@@ -54,7 +54,9 @@
     // Set front camera
     const cameraConstraints = {
         video: {
-            facingMode: "user" //front camera (use "environment" for rear)
+            facingMode: "user", //front camera
+            width: { ideal: 900 },
+            height: { ideal: 480 } 
         }
     };
     console.log(shots.value)
@@ -65,7 +67,6 @@
         <div v-if="shots!=0" class="w-[60%] h-[70%] bg-white border flex flex-col items-center justify-center gap-7 overflow-hidden">
             <Camera 
                 :constraints="cameraConstraints"
-                :resolution="{ width: 600, height: 300 }" 
                 ref="camera" 
                 autoplay
             >
