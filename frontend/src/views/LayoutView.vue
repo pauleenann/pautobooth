@@ -40,7 +40,11 @@
 
         <div class="w-[60%] h-[70%] bg-white border flex flex-col items-center justify-center gap-7 px-10 pt-5">
             <!-- instructions -->
-            <img :src="choose" class="w-100" alt="">
+            <div class="flex flex-col items-center mt-1">
+                <img :src="choose" class="w-100" alt="">
+                <p class="text-sm">Note: Pretty please hold your pose after each snap. Thank you, gorgeous!</p>
+            </div>
+            
 
             <!-- layouts -->
             <div class="w-full flex justify-evenly">

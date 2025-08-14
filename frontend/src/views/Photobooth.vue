@@ -77,7 +77,9 @@
                     <div v-else-if="isStart&&timer>0" class=" bg-[#FEC5BB]/30 w-50 h-50 p-5 rounded-circle text-white rounded-full flex items-center justify-center">
                         <img :src="timerImg[timer]" alt="">
                     </div>
-                    <div v-else class="bg-white w-full h-full"></div>
+                    <div v-else class="bg-white w-full h-full flex items-center justify-center">
+                        <p class="text-3xl font-medium text-[#ff8fab]">Hold that smile!</p>
+                    </div>
                 </div>
             </Camera>
         </div>

@@ -12,7 +12,7 @@
     <main class="w-screen h-screen grid grid-cols-1 lg:grid-cols-[55%_1fr] overflow-hidden relative">
         <!-- modal -->
         <div class="block lg:hidden absolute z-100 inset-0 bg-white/30 backdrop-blur-md flex items-center justify-center p-10">
-            <div class="bg-[#ff8fab] text-center p-5 rounded-2xl text-xl font-medium text-white">
+            <div class="bg-[#ff8fab] text-center p-5 rounded-2xl text-2xl font-medium text-white">
                 <p>Oopsie! Our mobile version is still getting all dolled up. Check back soon! </p>
                 <p class="mt-5">- Pau</p>
             </div>
